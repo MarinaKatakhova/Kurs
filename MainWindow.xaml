@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfApp9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp9"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+  
+    <Grid Style="{StaticResource CustomGridStyle}" Margin="10">
+        <StackPanel x:Name="AuthPanel" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Login:" Style="{StaticResource CustomTextBlockStyle}"/>
+            <TextBox x:Name="loginTextBox" Style="{StaticResource CustomTextBoxStyle}"/>
+
+            <TextBlock Text="Password:" Style="{StaticResource CustomTextBlockStyle}"/>
+            <PasswordBox x:Name="passwordText" Style="{StaticResource CustomPasswordBoxStyle}"/>
+
+            <TextBlock Text="Email:" Style="{StaticResource CustomTextBlockStyle}"/>
+            <TextBox x:Name="emailText" Style="{StaticResource CustomTextBoxStyle}"/>
+
+            <TextBlock Text="Phone:" Style="{StaticResource CustomTextBlockStyle}"/>
+            <TextBox x:Name="phoneText" Style="{StaticResource CustomTextBoxStyle}"/>
+
+            <Button Margin="10" x:Name="signUpButton" Content="Sign Up" Style="{StaticResource CustomButtonStyle}" Click="signUpButton_Click"/>
+            <Button Margin="10" x:Name="signInButton" Content="Sign In" Style="{StaticResource CustomButtonStyle}" Click="signInButton_Click"/>
+        </StackPanel>
+
+        <Button x:Name="NavigateToDatabaseButton" Content="Go to Tables" Style="{StaticResource CustomButtonStyle}" Margin="10" Click="NavigateToTablesPage" Visibility="Collapsed" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+    </Grid>
+</Window>

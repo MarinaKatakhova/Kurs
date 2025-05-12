@@ -1,0 +1,154 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Цветовая палитра -->
+    <Color x:Key="PrimaryPinkColor">#FF69B4</Color>
+    <Color x:Key="DarkPinkColor">#8B008B</Color>
+    <Color x:Key="LightPinkColor">#FFF0F5</Color>
+    <Color x:Key="LavenderColor">#E6E6FA</Color>
+    <Color x:Key="WhiteColor">#FFFFFF</Color>
+
+    <!-- Кисти -->
+    <SolidColorBrush x:Key="PrimaryPinkBrush" Color="{StaticResource PrimaryPinkColor}"/>
+    <SolidColorBrush x:Key="DarkPinkBrush" Color="{StaticResource DarkPinkColor}"/>
+    <SolidColorBrush x:Key="LightPinkBrush" Color="{StaticResource LightPinkColor}"/>
+    <SolidColorBrush x:Key="LavenderBrush" Color="{StaticResource LavenderColor}"/>
+    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource WhiteColor}"/>
+
+    <!-- Базовые стили -->
+    <Style x:Key="CustomGridStyle" TargetType="Grid">
+        <Setter Property="Background" Value="{StaticResource LightPinkBrush}"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <Style x:Key="CustomTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource DarkPinkBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Стиль для кнопок -->
+    <Style x:Key="CustomButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource PrimaryPinkBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="Padding" Value="8 4"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="3"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource DarkPinkBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#FF9932CC"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Стиль для кнопок действий в ListView -->
+    <Style x:Key="ListViewActionButtonStyle" TargetType="Button" BasedOn="{StaticResource CustomButtonStyle}">
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Padding" Value="5 2"/>
+    </Style>
+
+    <!-- Стиль для заголовков колонок GridView -->
+    <Style x:Key="SupplierGridViewColumnHeaderStyle" TargetType="GridViewColumnHeader">
+        <Setter Property="Background" Value="{StaticResource PrimaryPinkBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Стиль для ListView поставщиков -->
+    <Style x:Key="SupplierListViewStyle" TargetType="ListView">
+        <Setter Property="Background" Value="{StaticResource LightPinkBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryPinkBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkPinkBrush}"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <!-- Стиль для кнопки добавления поставщика -->
+    <Style x:Key="AddSupplierButtonStyle" TargetType="Button" BasedOn="{StaticResource CustomButtonStyle}">
+        <Setter Property="Content" Value="Добавить поставщика"/>
+        <Setter Property="Width" Value="150"/>
+    </Style>
+
+    <!-- Стиль для страницы поставщиков -->
+    <Style x:Key="SupplierPageGridStyle" TargetType="Grid">
+        <Setter Property="Background" Value="{StaticResource LightPinkBrush}"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <!-- Другие стили -->
+    <Style x:Key="CustomTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryPinkBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkPinkBrush}"/>
+    </Style>
+
+    <Style x:Key="CustomPasswordBoxStyle" TargetType="PasswordBox">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryPinkBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkPinkBrush}"/>
+        <Setter Property="PasswordChar" Value="•"/>
+    </Style>
+
+    <Style x:Key="CustomComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryPinkBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkPinkBrush}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="CustomDatePickerStyle" TargetType="DatePicker">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryPinkBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkPinkBrush}"/>
+    </Style>
+
+    <Style x:Key="CustomDataGridStyle" TargetType="DataGrid">
+        <Setter Property="Background" Value="{StaticResource LightPinkBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource DarkPinkBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryPinkBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="RowBackground" Value="{StaticResource LavenderBrush}"/>
+        <Setter Property="AlternatingRowBackground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="GridLinesVisibility" Value="All"/>
+        <Setter Property="VerticalGridLinesBrush" Value="{StaticResource PrimaryPinkBrush}"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource PrimaryPinkBrush}"/>
+        <Setter Property="RowHeight" Value="30"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+    </Style>
+</ResourceDictionary>

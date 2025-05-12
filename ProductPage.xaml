@@ -1,0 +1,74 @@
+﻿<Page x:Class="WpfApp9.Pages.ProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductPage" IsVisibleChanged="ProductPage_IsVisibleChanged">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Style="{StaticResource CustomGridStyle}">
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="165"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="SearchProductName" Grid.Column="0" HorizontalAlignment="Right"
+                         TextChanged="SearchProductName_TextChanged" Width="135" Margin="5"/>
+                <TextBlock Text="Введите название" Grid.Column="0" HorizontalAlignment="Left" FontSize="14" Margin="5"/>
+
+                <ComboBox Name="SortProductCategory" Grid.Column="1" HorizontalAlignment="Right"
+                          DisplayMemberPath="NameOfCategory" SelectedItem="{Binding ProductCategories}"
+                          SelectionChanged="SortProductCategory_SelectionChanged" Width="265" Margin="5"/>
+                <TextBlock Text="Сортировать" Grid.Column="1" HorizontalAlignment="Left" FontSize="14" Margin="5"/>
+
+                <Button x:Name="CleanFilter" Grid.Column="2" Content="Очистить фильтр" FontSize="10"
+                        Click="CleanFilter_OnClick" Margin="5"/>
+            </Grid>
+        </WrapPanel>
+
+        <DataGrid x:Name="productDataGrid" AutoGenerateColumns="False"
+                  Style="{StaticResource CustomDataGridStyle}" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding ProductName}" Width="*"/>
+                <DataGridTextColumn Header="Бренд" Binding="{Binding Brand}" Width="*"/>
+                <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="*"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat={}{0:C}}" Width="Auto"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Stock}" Width="Auto"/>
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit" Style="{StaticResource CustomButtonStyle}"
+                                    Click="ButtonEdit_OnClick" Margin="2"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Style="{StaticResource CustomButtonStyle}"
+                                    Click="ButtonDelete_OnClick" Margin="2"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Добавить продукт" Style="{StaticResource CustomButtonStyle}"
+                Click="ButtonAdd_OnClick" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="0,0,37,10" Width="145"/>
+
+        <Button Content="Back" Style="{StaticResource CustomButtonStyle}"
+                Click="NavigateBack" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Margin="0,0,0,10" Width="145"/>
+    </Grid>
+</Page>

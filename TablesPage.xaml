@@ -1,0 +1,27 @@
+﻿<Page x:Class="WpfApp9.TablesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WpfApp9"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TablesPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Style="{StaticResource CustomGridStyle}">
+        <StackPanel>
+            <Button Content="Customers" Style="{StaticResource CustomButtonStyle}" Click="NavigateToCustomers" Width="200" Margin="10"/>
+            <Button Content="Products" Style="{StaticResource CustomButtonStyle}" Click="NavigateToProducts" Width="200" Margin="10"/>
+            <Button Content="Orders" Style="{StaticResource CustomButtonStyle}" Click="NavigateToOrders" Width="200" Margin="10"/>
+            <Button Content="Employees" Style="{StaticResource CustomButtonStyle}" Click="NavigateToEmployees" Width="200" Margin="10"/>
+            <Button Content="Suppliers" Style="{StaticResource CustomButtonStyle}" Click="NavigateToSuppliers" Width="200" Margin="10"/>
+            <Button Content="Back" Style="{StaticResource CustomButtonStyle}" Click="NavigateBack" Width="200" Margin="10" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Page>

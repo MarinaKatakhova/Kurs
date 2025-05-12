@@ -1,0 +1,97 @@
+﻿<Page x:Class="WpfApp9.EmployeePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WpfApp9"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EmployeePage" IsVisibleChanged="EmployeePage_VisibleChanged">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Style="{StaticResource CustomGridStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Фильтр по имени и сортировка -->
+        <WrapPanel Grid.Row="0" HorizontalAlignment="Center" Margin="10">
+            <TextBox x:Name="SearchEmployeeName"
+                     TextChanged="SearchEmployee_TextChanged"
+                     Width="200" Margin="5"
+                     ToolTip="Введите имя для поиска"/>
+            <ComboBox x:Name="SortComboBox"
+                      SelectionChanged="SortEmployee_SelectionChanged"
+                      Width="200" Margin="5"
+                      ToolTip="Выберите критерий сортировки">
+                <ComboBoxItem Content="Без сортировки" IsSelected="True"/>
+                <ComboBoxItem Content="По имени"/>
+                <ComboBoxItem Content="По фамилии"/>
+                <ComboBoxItem Content="По дате найма"/>
+                <ComboBoxItem Content="По зарплате"/>
+            </ComboBox>
+            <Button Content="Очистить фильтр"
+                    Click="ClearFilters_Click"
+                    Margin="5"
+                    ToolTip="Очистить текущий фильтр"/>
+        </WrapPanel>
+
+        <!-- DataGrid для отображения сотрудников -->
+        <DataGrid x:Name="employeeDataGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  Style="{StaticResource CustomDataGridStyle}"
+                  Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="*"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding Position}" Width="*"/>
+                <DataGridTextColumn Header="Дата приема" Binding="{Binding HireDate, StringFormat=dd.MM.yyyy}" Width="*"/>
+                <DataGridTextColumn Header="Зарплата" Binding="{Binding Salary, StringFormat=C}" Width="*"/>
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit"
+                                    Style="{StaticResource CustomButtonStyle}"
+                                    Click="EditEmployee_Click"
+                                    Margin="2"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete"
+                                    Style="{StaticResource CustomButtonStyle}"
+                                    Click="DeleteEmployee_Click"
+                                    Margin="2"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Кнопки добавления и возврата -->
+        <Button Content="Добавить сотрудника"
+                Grid.Row="1"
+                Style="{StaticResource CustomButtonStyle}"
+                Click="AddEmployee_Click"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="10" Width="120"/>
+
+        <Button Content="Back"
+                Grid.Row="1"
+                Style="{StaticResource CustomButtonStyle}"
+                Click="GoBack_Click"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,10" Width="145"/>
+    </Grid>
+</Page>
